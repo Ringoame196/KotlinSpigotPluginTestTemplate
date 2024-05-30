@@ -4,6 +4,7 @@ import dev.s7a.gradle.minecraft.server.tasks.LaunchMinecraftServerTask.JarUrl
 import groovy.lang.Closure
 import net.minecrell.pluginyml.bukkit.BukkitPluginDescription
 
+// プラグインの設定
 plugins {
     kotlin("jvm") version "1.6.10"
     id("net.minecrell.plugin-yml.bukkit") version "0.5.1"
@@ -16,7 +17,7 @@ plugins {
 
 val gitVersion: Closure<String> by extra
 
-val pluginVersion: String by project.ext
+val pluginVersion: String = project.findProperty("pluginVersion") as String
 
 repositories {
     mavenCentral()
@@ -33,7 +34,7 @@ dependencies {
 }
 
 configure<BukkitPluginDescription> {
-    main = "@group@.Main"
+    main = "com.github.Ringoame196.Main"
     version = gitVersion()
     apiVersion = "1." + pluginVersion.split(".")[1]
 }
@@ -41,9 +42,9 @@ configure<BukkitPluginDescription> {
 tasks.withType<ShadowJar> {
     configurations = listOf(shadowImplementation)
     archiveClassifier.set("")
-    relocate("kotlin", "@group@.libs.kotlin")
-    relocate("org.intellij.lang.annotations", "@group@.libs.org.intellij.lang.annotations")
-    relocate("org.jetbrains.annotations", "@group@.libs.org.jetbrains.annotations")
+    relocate("kotlin", "com.github.Ringoame196.libs.kotlin")
+    relocate("org.intellij.lang.annotations", "com.github.Ringoame196.libs.org.intellij.lang.annotations")
+    relocate("org.jetbrains.annotations", "com.github.Ringoame196.libs.org.jetbrains.annotations")
 }
 
 tasks.named("build") {
