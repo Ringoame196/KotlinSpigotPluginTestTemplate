@@ -15,4 +15,4 @@
 ## プロジェクト情報
 - プロジェクトパス : Ringoame196/KotlinSpigotPluginTestTemplate.git
 - 開発者名 : Ringoame196
-- 開発開始日 : 2024-05-30
+- 開発開始日 : 2024-06-01
